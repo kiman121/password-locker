@@ -46,3 +46,15 @@ class TestCredentials(unittest.TestCase):
         test_credentials = Credentials("dama2021", "twitter", "dama2021", "1234")
         test_credentials.save_credentials()
         self.assertEqual(len(Credentials.credentials_list), 2)
+
+    def test_find_credentials_by_site_name(self):
+        '''
+        test_find_credentials_by_site_name test case to check if we can find credentials by site name and display information
+        '''
+
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("dama2021", "twitter", "dama2021", "1234")
+        test_credentials.save_credentials()
+
+        found_credentials = Credentials.find_credentials_by_site_name("twitter")
+        self.assertEqual(found_credentials.user_id, test_credentials.user_id)
