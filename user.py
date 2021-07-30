@@ -17,8 +17,6 @@ class User:
         '''
         self.first_name = first_name
         self.last_name = last_name
-        # self.email = email
-        # self.phone_number = phone_number
         self.username = username
         self.password = password
     
@@ -28,7 +26,18 @@ class User:
         '''
         User.user_list.append(self)
 
-    
+    @classmethod
+    def find_user_by_username(cls, username):
+        '''
+        find_user_by_username method get a user based on provided username
+        Args:
+            username: user's username to search for
+        Returns:
+            user details that match the username
+        '''
+        for user in cls.user_list:
+            if user.username == username:
+                return user
 
 
 
