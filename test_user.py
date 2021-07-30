@@ -11,7 +11,7 @@ class TestUser(unittest.TestCase):
         '''
         setUp method to run before each test case
         '''
-        self.new_user = User("Patrick", "Mwangi", "0722334455", "mwangi@ms.com", "mwas2021",'1234')
+        self.new_user = User("Patrick", "Mwangi", "mwas2021",'1234')
     
     def tearDown(self):
         '''
@@ -25,8 +25,8 @@ class TestUser(unittest.TestCase):
         '''
         self.assertEqual(self.new_user.first_name, "Patrick")
         self.assertEqual(self.new_user.last_name, "Mwangi")
-        self.assertEqual(self.new_user.email, "0722334455")
-        self.assertEqual(self.new_user.phone_number, "mwangi@ms.com")
+        # self.assertEqual(self.new_user.email, "0722334455")
+        # self.assertEqual(self.new_user.phone_number, "mwangi@ms.com")
         self.assertEqual(self.new_user.username, "mwas2021")
         self.assertEqual(self.new_user.password, '1234')
     
@@ -45,11 +45,14 @@ class TestUser(unittest.TestCase):
         to our user_list 
         '''
         self.new_user.save_user()
-        test_user = User("Damaris", "Mwangangi", "0712345678","dama2021","dama@ms.com","123")
+        test_user = User("Damaris", "Mwangangi","dama2021","123")
         test_user.save_user()
         self.assertEqual(len(User.user_list),2)
 
-
+    def test_find_user_by_username(self):
+        '''
+        
+        '''
 
 
 
