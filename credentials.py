@@ -23,6 +23,12 @@ class Credentials:
         '''
         Credentials.credentials_list.append(self)
     
+    def delete_credentials(self):
+        '''
+        delete_credentials method deletes saved credentails from the credentails_list
+        '''
+        Credentials.credentials_list.remove(self)
+
     @classmethod
     def find_credentials_by_site_name(cls, site_name):
         '''
