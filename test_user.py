@@ -49,16 +49,14 @@ class TestUser(unittest.TestCase):
         test_user.save_user()
         self.assertEqual(len(User.user_list), 2)
 
-    def test_find_user_by_username(self):
+    def test_is_unique_username(self):
         '''
-        test_find_user_by_username test case to check if we find a user by username and display information
+        test_is_unique_username test case to check if a username exists (boolean)
         '''
         self.new_user.save_user()
-        test_user = User("Liam", "Nyamu", "liam2021", "12345")
-        test_user.save_user()
 
-        found_user = User.find_user_by_username("liam2021")
-        self.assertEqual(found_user.first_name, test_user.first_name)
+        is_unique_username = User.is_unique_username("liam2021")
+        self.assertTrue(is_unique_username)
 
     def test_login_user(self):
         '''
