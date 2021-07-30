@@ -39,6 +39,19 @@ class User:
             if user.username == username:
                 return user
 
+    @classmethod
+    def login_user(cls, username, password):
+        '''
+        login_user method gets a user based on given username and password
+        Args:
+            username: user's username to search and match password
+            password: user provided password
+        Returns:
+            user details that match the username and password provided
+        '''
+        for user in cls.user_list:
+            if user.username == username and user.password == password:
+                return user
 
 
 
