@@ -22,3 +22,17 @@ class Credentials:
         save_credentials method saves credentials objects into credentials list
         '''
         Credentials.credentials_list.append(self)
+    
+    @classmethod
+    def find_credentials_by_site_name(cls, site_name):
+        '''
+        find_credentials_by_site_name method takes in a site name and returns 
+        credentials that match the site name
+        Args:
+            site_name: site name to search for
+        Returns:
+            credentials that match the site name
+        '''
+        for credentials in cls.credentials_list:
+            if credentials.site_name == site_name:
+                return credentials
