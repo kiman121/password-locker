@@ -51,14 +51,27 @@ class TestUser(unittest.TestCase):
 
     def test_find_user_by_username(self):
         '''
-        test_find_user_by_username test case to if we find a user by username and display information
+        test_find_user_by_username test case to check if we find a user by username and display information
         '''
         self.new_user.save_user()
-        test_contact = User("Liam", "Nyamu", "liam2021", "12345")
-        test_contact.save_user()
+        test_user = User("Liam", "Nyamu", "liam2021", "12345")
+        test_user.save_user()
 
         found_user = User.find_user_by_username("liam2021")
-        self.assertEqual(found_user.first_name, test_contact.first_name)
+        self.assertEqual(found_user.first_name, test_user.first_name)
+
+    def test_login_user(self):
+        '''
+        test_login_user test case to check if a user is successfuly logged in
+        '''
+        self.new_user.save_user()
+        test_user = User("Grace", "Kakwasi", "grace2021", "12")
+        test_user.save_user()
+
+        logged_in_user = User.login_user("grace2021","12")
+        self.assertEqual(logged_in_user.first_name, test_user.first_name)
+
+    
 
     if __name__ == '__main__':
         unittest.main()
