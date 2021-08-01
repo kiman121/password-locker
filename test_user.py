@@ -74,5 +74,3 @@ class TestUser(unittest.TestCase):
     if __name__ == '__main__':
         unittest.main()
 
-
-# python3 -m unittest test_user.py

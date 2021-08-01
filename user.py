@@ -35,12 +35,15 @@ class User:
         Returns:
             Boolean: True or false depending on if a username exists or not
         '''
-        for user in cls.user_list:
-            if user.username == username:
-                return False
-            else:
-                return True
-
+        if len(cls.user_list) > 0:
+            for user in cls.user_list:
+                if user.username == username:
+                    return False
+                else:
+                    return True
+        else:
+            return True
+            
     @classmethod
     def login_user(cls, username, password):
         '''
@@ -54,8 +57,6 @@ class User:
         for user in cls.user_list:
             if user.username == username and user.password == password:
                 return user
-
-
 
     
 
