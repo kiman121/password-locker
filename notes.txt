@@ -1,19 +1,16 @@
-create a password locker account where as user will:
-a) Create a new locker account:
-    > check if a username is unique
-    > if username is unique, add the user details;
+create a password locker account where an interested user will:
+a) Create a new locker account. On creation, the app will:
+    > Capture the following user details;
         1) first_name 
         2) last_name
         3) username and 
         4) passord
-
-b) user login
-    > authenticate user login credentials
-        > request for username and password
+    > Check if a username is unique
+b) Able to login. On login, the app will:
+    > authenticate user login credentials (validated username and password)
     > login user if authenticated
 
-c) Create/add existing account credentials
-    > login a user
+c) Create/add existing account credentials. On creation/add, the app will:
     > capture the credent details;
         1) user_id (be provided after successful login)
         2) site name
@@ -21,21 +18,9 @@ c) Create/add existing account credentials
         4) password
             > give option to autogenerate or
             > user enters his/her password
-d) Show a list of a user's credentials;
+d) View a list of his/her credentials. Details to include:
     > site name
     > username and 
     > password
-e) delete option. user to be able to remove a credential that he/she no longer needs
-
-
-
-
-Objectives
-a) Two classes
-    > user class
-    > credential class
-b) Authentication system
-    > user to login using their credentials provided on creating locker
-c) Use docstrings to document methods and functions
-d) Test classes for the two classes.
+e) Be able to remove/delete credentials that he/she no longer needs
 

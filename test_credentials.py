@@ -1,5 +1,6 @@
 import unittest
 from credentials import Credentials
+import pyperclip
 
 class TestCredentials(unittest.TestCase):
     '''
@@ -56,7 +57,7 @@ class TestCredentials(unittest.TestCase):
         test_credentials = Credentials("dama2021", "twitter", "dama2021", "1234")
         test_credentials.save_credentials()
 
-        found_credentials = Credentials.find_credentials_by_site_name("twitter")
+        found_credentials = Credentials.find_credentials_by_site_name("twitter","dama2021")
         self.assertEqual(found_credentials.user_id, test_credentials.user_id)
 
     def test_delete_credentials(self):
@@ -70,6 +71,53 @@ class TestCredentials(unittest.TestCase):
         self.new_credentials.delete_credentials() # Deleting a credentials object
         self.assertEqual(len(Credentials.credentials_list),1)
 
+    def test_credentials_exist(self):
+        '''
+        test_credentials_exist test case to confirm if credentials exist
+        '''
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("dama2021", "twitter", "dama2021", "1234")
+        test_credentials.save_credentials()
+
+        credentials_exist = Credentials.credentials_exist("twitter", "dama2021")
+        self.assertTrue(credentials_exist)
+    
+    def test_has_credentials(self):
+        '''
+        test_has_credentials test case to confirm if a user has credentials
+        '''
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("dama2021", "twitter", "dama2021", "1234")
+        test_credentials.save_credentials()
+
+        has_credentials = Credentials.has_credentials("dama2021")
+        self.assertTrue(has_credentials)
+
+    def test_display_credentials(self):
+        '''
+        test_display_credentials test case to confirm if there are credentials to display
+        '''
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("dama2021", "twitter", "dama2021", "1234")
+        test_credentials.save_credentials()
+
+        credentials = Credentials.display_credentials()
+        self.assertTrue(credentials)
+
+    def test_copy_credentials(self):
+        '''
+        test_copy_credentials test case to confirm that we are copying the selected credetials
+        '''
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("dama2021", "twitter", "dama2021", "1234")
+        test_credentials.save_credentials()
+
+        copied_credentials = Credentials.find_credentials_by_site_name("twitter", "dama2021")
+        test_copy = "site_name:"+copied_credentials.site_name + ", username:" + copied_credentials.username+", password:"+copied_credentials.password
+        
+        Credentials.copy_credentials("twitter", "dama2021")
+        
+        self.assertEqual(test_copy, pyperclip.paste())
 
     if __name__ == '__main__':
         unittest.main()
