@@ -39,10 +39,8 @@ class User:
             for user in cls.user_list:
                 if user.username == username:
                     return False
-                else:
-                    return True
-        else:
-            return True
+                return True
+        return True
             
     @classmethod
     def login_user(cls, username, password):
