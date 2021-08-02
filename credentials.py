@@ -3,6 +3,7 @@ import pyperclip
 import string
 import secrets
 
+
 class Credentials:
     '''
     Class generates new instances of credentials
@@ -36,12 +37,13 @@ class Credentials:
         Credentials.credentials_list.remove(self)
 
     @classmethod
-    def find_credentials_by_site_name(cls, site_name,user_id):
+    def find_credentials_by_site_name(cls, site_name, user_id):
         '''
         find_credentials_by_site_name method takes in a site name and returns 
         credentials that match the site name
         Args:
             site_name: site name to search for
+            user_id: User id to match
         Returns:
             credentials that match the site name
         '''
@@ -55,6 +57,7 @@ class Credentials:
         Method that checks if credentials exists
         Args:
             site_name: Site name to search if it exists
+            user_id: User id to match
         Returns:
             Boolean: True or false if credentials exist
         '''
@@ -62,7 +65,7 @@ class Credentials:
         if len(cls.credentials_list) > 0:
             for credentials in cls.credentials_list:
                 if credentials.site_name == site_name and credentials.user_id == user_id:
-                    status = True         
+                    status = True
         return status
 
     @classmethod
@@ -78,9 +81,8 @@ class Credentials:
         if len(cls.credentials_list) > 0:
             for credentials in cls.credentials_list:
                 if credentials.user_id == user_id:
-                    status = True         
+                    status = True
         return status
-
 
     @classmethod
     def display_credentials(cls):
@@ -95,10 +97,12 @@ class Credentials:
         Method that copies the matched credentials
         Args:
             site_name: Site name to match
+            user_id: User id to match
         Return:
             Matched credentials
         '''
-        matched_credentials = cls.find_credentials_by_site_name(site_name, user_id)
+        matched_credentials = cls.find_credentials_by_site_name(
+            site_name, user_id)
         pyperclip.copy("site_name:"+matched_credentials.site_name + ", username:" +
                        matched_credentials.username+", password:"+matched_credentials.password)
 

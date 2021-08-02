@@ -48,11 +48,13 @@ def save_credentials(credentials):
     '''
     Credentials.save_credentials(credentials)
 
+
 def has_records(user_id):
     '''
     Function that checks if a user has records
     '''
     return Credentials.has_credentials(user_id)
+
 
 def display_contacts():
     '''
@@ -68,11 +70,11 @@ def check_existing_credentials(site_name, user_id):
     return Credentials.credentials_exist(site_name, user_id)
 
 
-def find_credentials(site_name,user_id):
+def find_credentials(site_name, user_id):
     '''
-    Function that finds credentials by site name and returns the credentials
+    Function that finds credentials by site name and user_id
     '''
-    return Credentials.find_credentials_by_site_name(site_name,user_id)
+    return Credentials.find_credentials_by_site_name(site_name, user_id)
 
 
 def delete_credentials(credentials):
@@ -155,7 +157,7 @@ def main():
                 print("\n")
                 print(f"Welcome {user_details.first_name}")
                 while True:
-                    
+
                     print(
                         "Choose action: ac - add credentials, sc - search credentials, dc - display credentials, lo - log out, del - delete credentials, cpy - copy credentials")
                     action = input("Action: ").lower().strip()
@@ -184,7 +186,7 @@ def main():
                             f"New credentials for {site_name}|{user_name} added.")
                         print("\n")
                     elif action == "dc":
-                        
+
                         if has_records(logged_in_user_id):
                             print("\n")
                             print("Your credentials:")
@@ -232,7 +234,7 @@ def main():
 
                             print(
                                 f"{search_credentials.site_name} credentials have been deleted!!")
-                                
+
                             if has_records(logged_in_user_id):
                                 print("\n")
                                 print("Your credentials:")
@@ -241,7 +243,8 @@ def main():
                                 count = 1
                                 for credentials in display_contacts():
                                     if credentials.user_id == logged_in_user_id:
-                                        print(f"{count}){credentials.site_name}")
+                                        print(
+                                            f"{count}){credentials.site_name}")
                                         print(
                                             f"   Username: {credentials.username}")
                                         print(
