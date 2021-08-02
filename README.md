@@ -1,5 +1,5 @@
 # GitHub Search Web Application
-#### A Password locker app where interested users can store their passwords.
+#### A Password locker app where interested users can store their different site login credentials.
 
 #### By **Patrick Mwangangi**
 ## Description

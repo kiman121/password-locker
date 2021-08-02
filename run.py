@@ -212,6 +212,7 @@ def main():
                         if check_existing_credentials(site_name, logged_in_user_id):
                             search_credentials = find_credentials(
                                 site_name, logged_in_user_id)
+                            print("\n")
                             print(
                                 f"Credentials for {search_credentials.site_name}:")
                             print("-"*25)
