@@ -68,6 +68,6 @@ class TestUser(unittest.TestCase):
 
         logged_in_user = User.login_user("grace2021", "12")
         self.assertEqual(logged_in_user.first_name, test_user.first_name)
-
+    
     if __name__ == '__main__':
         unittest.main()
